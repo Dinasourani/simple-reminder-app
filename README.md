@@ -27,43 +27,45 @@ Follow these steps to set up and run the application:
 
 You only need to install the `plyer` library using `pip`:
 
-📝 Usage
-Start the App: Run the Python script. A simple window will appear.
+### 📝 Usage
 
-Enter Time: In the "Time (HH:MM):" field, enter the time you want the reminder to trigger, using a 24-hour format (e.g., 14:30 for 2:30 PM).
+1.  **Start the App:** Run the Python script. A simple window will appear.
+2.  **Enter Time:** In the "Time (HH:MM):" field, enter the time you want the reminder to trigger, using a 24-hour format (e.g., `14:30` for 2:30 PM).
+3.  **Enter Reminder Text:** In the "Reminder Text:" field, enter the message you want to see (e.g., `Take a break` or `Meeting with team`).
+4.  **Add Reminder:** Click the **"افزودن یادآوری"** (Add Reminder) button. A success message will confirm the reminder has been saved.
+5.  **Notification:** At the specified time, a desktop notification will pop up with your reminder text. The application checks for new reminders every **30 seconds**.
 
-Enter Reminder Text: In the "Reminder Text:" field, enter the message you want to see (e.g., Take a break or Meeting with team).
+### 🔍 Code Breakdown
 
-Add Reminder: Click the "افزودن یادآوری" (Add Reminder) button. A success message will confirm the reminder has been saved.
-
-Notification: At the specified time, a desktop notification will pop up with your reminder text. The application checks for new reminders every 30 seconds.
-
-🔍 Code Breakdown
 The core functionality is handled by three main components:
 
-🛑 Important Notes
-Time Format: The time must be entered in the HH:MM 24-hour format.
+| Component | Description | Key Libraries/Functions |
+| :--- | :--- | :--- |
+| **GUI Setup** | Creates the main window, input fields (`tk.Entry`), labels (`tk.Label`), and the "Add Reminder" button (`tk.Button`). | `tkinter`, `tk.Tk()`, `pack()` |
+| **Reminder Logic** | Stores reminders in a dictionary (`reminders`) where the key is the time and the value is the text. Handles input validation and saving. | `add_reminder()`, `messagebox` |
+| **Checker Thread** | Runs in the background, constantly checking the current time against the stored reminder times. | `threading.Thread()`, `check_reminders()`, `datetime.now()` |
+| **Notification** | Displays a native, platform-specific notification when a time match occurs. | `plyer.notification.notify()` |
 
-Persistence: The reminders are not saved to a file (like a database or JSON). They only exist for the duration of the application session. Once you close the app, all current reminders will be lost.
+### 🛑 Important Notes
 
-Threading: The check_reminders function is run as a daemon thread, meaning the thread will automatically terminate when the main application window is closed.
+* **Time Format:** The time *must* be entered in the **HH:MM** 24-hour format.
+* **Persistence:** The reminders are **not saved** to a file (like a database or JSON). They only exist for the duration of the application session. Once you close the app, all current reminders will be lost.
+* **Threading:** The `check_reminders` function is run as a `daemon` thread, meaning the thread will automatically terminate when the main application window is closed.
 
-🚀 Future Enhancements
-Add functionality to display and delete existing reminders.
+### 🚀 Future Enhancements
 
-Implement data persistence (e.g., using a JSON file or SQLite) to save reminders across sessions.
+* Add functionality to **display and delete** existing reminders.
+* Implement **data persistence** (e.g., using a JSON file or SQLite) to save reminders across sessions.
+* Allow reminders to be set for a specific **date**, not just a time.
+* Improve time format validation and error handling.
+* Add a feature to set **repeating** or recurring reminders.
 
-Allow reminders to be set for a specific date, not just a time.
+### 🤝 Contributing
 
-Improve time format validation and error handling.
-
-Add a feature to set repeating or recurring reminders.
-
-🤝 Contributing
 Feel free to fork this repository and submit pull requests with any improvements or new features!
 
-📄 License
+### 📄 License
+
 This project is open-source.
 
-```bash
-pip install plyer
+
