@@ -1,101 +1,69 @@
-# -Simple-Reminder-App-Python-Tkinter-
-A lightweight and user-friendly desktop reminder application built with Python. It allows users to schedule time-based reminders and receive native system notifications at the exact time they set. This project is ideal for beginners exploring GUI development, threading, and desktop notifications in Python.
+## 🔔 Reminder App
 
-🚀 Key Features
+This is a simple desktop reminder application built using Python's **`tkinter`** for the GUI and the **`plyer`** library for native system notifications.
 
-Clean and Simple GUI using Tkinter
+### ✨ Features
 
-Time-based reminders in HH:MM format
+* **GUI Interface:** Easy-to-use graphical interface for setting reminders.
+* **Time-Based Reminders:** Set reminders for a specific time of the day (in HH:MM format).
+* **System Notifications:** Uses native desktop notifications via the `plyer` library to alert the user.
+* **Non-Blocking:** Reminder checking runs in a separate thread (`threading`) so the main application GUI remains responsive.
+* **Simple Setup:** Minimal dependencies and straightforward code structure.
 
-Native OS notifications powered by plyer
+### ⚙️ Requirements
 
-Background monitoring thread (non-blocking)
+To run this application, you need to have Python installed, along with the `tkinter` (usually bundled with Python) and the `plyer` library.
 
-Instant validation and feedback using Tkinter dialogs
+1.  **Python:** (3.x recommended)
+2.  **Required Libraries:**
+    * `plyer`
+    * `tkinter` (standard library)
 
-Lightweight, portable, and easy to run
+### 💻 Installation and Setup
 
-📂 Project Structure
-reminder app.py     # Main application file
+Follow these steps to set up and run the application:
 
-📦 Requirements
+#### 1. Install Dependencies
 
-Python 3.8+
+You only need to install the `plyer` library using `pip`:
 
-Python libraries:
+📝 Usage
+Start the App: Run the Python script. A simple window will appear.
 
-tkinter (pre-installed with most Python distributions)
+Enter Time: In the "Time (HH:MM):" field, enter the time you want the reminder to trigger, using a 24-hour format (e.g., 14:30 for 2:30 PM).
 
-plyer (for desktop notifications)
+Enter Reminder Text: In the "Reminder Text:" field, enter the message you want to see (e.g., Take a break or Meeting with team).
 
-Install missing dependencies:
+Add Reminder: Click the "افزودن یادآوری" (Add Reminder) button. A success message will confirm the reminder has been saved.
 
-pip install plyer
+Notification: At the specified time, a desktop notification will pop up with your reminder text. The application checks for new reminders every 30 seconds.
 
-🛠️ Installation & Running
+🔍 Code Breakdown
+The core functionality is handled by three main components:
 
-Clone or download the project, then simply run:
+🛑 Important Notes
+Time Format: The time must be entered in the HH:MM 24-hour format.
 
-python "reminder app.py"
+Persistence: The reminders are not saved to a file (like a database or JSON). They only exist for the duration of the application session. Once you close the app, all current reminders will be lost.
 
+Threading: The check_reminders function is run as a daemon thread, meaning the thread will automatically terminate when the main application window is closed.
 
-The graphical interface will open automatically.
+🚀 Future Enhancements
+Add functionality to display and delete existing reminders.
 
-📝 How It Works
+Implement data persistence (e.g., using a JSON file or SQLite) to save reminders across sessions.
 
-Enter a time in HH:MM format (24-hour format).
+Allow reminders to be set for a specific date, not just a time.
 
-Enter the reminder message you want to receive.
+Improve time format validation and error handling.
 
-Click “Add Reminder”.
+Add a feature to set repeating or recurring reminders.
 
-A background thread continuously checks the current time.
-
-When the system time matches a saved reminder, a desktop notification appears instantly.
-
-📘 Example
-
-Time:
-
-14:30
-
-
-Reminder text:
-
-Take a short break!
-
-
-When the clock hits 14:30, the system shows a native notification:
-
-Title: Reminder!
-Message: Take a short break!
-
-🧠 Technical Highlights
-
-Threading:
-Uses a daemon thread to check reminders every 30 seconds without freezing the GUI.
-
-Tkinter GUI:
-Simple and intuitive interface with labels, input fields, and a button.
-
-Cross-Platform Notifications:
-The plyer.notification module supports Windows, macOS, and Linux.
-
-📝 Future Improvements (Optional)
-
-These are ideas you could add to the project later:
-
-Save reminders in a file (JSON/SQLite)
-
-Allow date-based reminders
-
-Add editing/deleting reminders
-
-Add sound alerts
-
-Improve UI layout with custom themes
+🤝 Contributing
+Feel free to fork this repository and submit pull requests with any improvements or new features!
 
 📄 License
+This project is open-source.
 
-You may use this project freely.
-(Consider adding an MIT License if publishing publicly.)
+```bash
+pip install plyer
